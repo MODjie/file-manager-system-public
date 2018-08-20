@@ -9,15 +9,53 @@ class Desktop extends React.Component {
     constructor() {
         super();
         this.state = {
-            rowColBackground: '#FFFFFF',
+            isClick1: false,
+            isClick2: false,
+            isClick3: false,
         }
     }
+
     onSearch = value => {
         console.log(value)
     }
 
-    diskOnClik = (e) => {
-        debugger
+    onClick1 = () => {
+        const { isClick1 } = this.state;
+        if(!isClick1){
+            this.setState({
+                isClick1:true,
+                isClick2:false,
+                isClick3:false,
+            })
+        }else{
+            this.setState({isClick1:false});
+        }
+    }
+
+    onClick2 = () => {
+        const { isClick2 } = this.state;
+        if(!isClick2){
+            this.setState({
+                isClick1:false,
+                isClick2:true,
+                isClick3:false,
+            })
+        }else{
+            this.setState({isClick2:false});
+        }
+    }
+
+    onClick3 = () => {
+        const { isClick3 } = this.state;
+        if(!isClick3){
+            this.setState({
+                isClick1:false,
+                isClick2:false,
+                isClick3:true,
+            })
+        }else{
+            this.setState({isClick3:false});
+        }
     }
 
     render() {
@@ -31,13 +69,13 @@ class Desktop extends React.Component {
                 <div className={styles.wrapper}>
                     <Row>
                         <Col span={6} >
-                            <Disk labelText="本地磁盘(C:)" onClick={this.diskOnClik} />
+                            <Disk labelText="本地磁盘(C:)" onClick={this.onClick1} isClick={this.state.isClick1}/>
                         </Col>
                         <Col span={6} >
-                            <Disk labelText="本地磁盘(D:)" onClick={this.diskOnClik} />
+                            <Disk labelText="本地磁盘(D:)"  onClick={this.onClick2} isClick={this.state.isClick2}/>
                         </Col>
                         <Col span={6} >
-                            <Disk labelText="本地磁盘(E:)" onClick={this.diskOnClik} />
+                            <Disk labelText="本地磁盘(E:)"  onClick={this.onClick3} isClick={this.state.isClick3}/>
                         </Col>
                     </Row>
                 </div>

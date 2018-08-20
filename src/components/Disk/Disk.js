@@ -29,12 +29,26 @@ class Disk extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const { isClick } = this.state;
+        this.changeBackground(isClick);
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.rowColBackground) {
             this.setState({ rowColBackground: nextProps.rowColBackground });
         }
-        if (nextProps.isClick) {
+        if (nextProps.isClick != null) {
+            this.changeBackground(nextProps.isClick);      
             this.setState({ isClick: nextProps.isClick })
+        }
+    }
+
+    changeBackground = isClick =>{
+        if (!isClick) {
+            this.setState({ rowColBackground: '#FFFFFF', })
+        } else {
+            this.setState({ rowColBackground: '#E5F3FB', })
         }
     }
 
@@ -50,17 +64,7 @@ class Disk extends React.Component {
      */
     onClick = () => {
         const { isClick } = this.state;
-        if (isClick) {
-            this.setState({
-                rowColBackground: '#FFFFFF',
-                isClick: false,
-            })
-        } else {
-            this.setState({
-                rowColBackground: '#E5F3FB',
-                isClick: true,
-            })
-        }
+        this.setState({ isClick: !isClick, })
     }
 
     /**
