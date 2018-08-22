@@ -1,5 +1,7 @@
 import React from 'react';
-import { Input, Icon, Row, Col, Progress } from 'antd';
+import { connect } from 'dva';
+import { routerRedux } from 'dva/router';
+import { Input, Icon, Row, Col, Progress, message } from 'antd';
 import styles from './Desktop.less';
 import Disk from '../../components/Disk/Disk';
 
@@ -17,9 +19,6 @@ class Desktop extends React.Component {
     constructor() {
         super();
         this.state = {
-            isClick1: false,
-            isClick2: false,
-            isClick3: false,
             diskList: [],
         }
     }
@@ -30,6 +29,19 @@ class Desktop extends React.Component {
 
     componentWillMount() {
         this.setState({ diskList: diskListSource });
+        this.linkTest();
+    }
+
+    linkTest = () => {
+        this.props.dispatch({
+            type: 'test',
+        }).then(result => {
+            if (result) {
+                message.success(result);
+            } else {
+                message.errr("连接失败");
+            }
+        });
     }
 
     onClick(e, index, diskList) {
@@ -74,4 +86,9 @@ class Desktop extends React.Component {
     }
 }
 
-export default Desktop
+function mapDispatchToProps(dispatch) {
+    return dispatch
+
+}
+
+export default connect(mapDispatchToProps)(Desktop);
