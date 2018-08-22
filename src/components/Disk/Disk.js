@@ -39,12 +39,12 @@ class Disk extends React.Component {
             this.setState({ rowColBackground: nextProps.rowColBackground });
         }
         if (nextProps.isClick != null) {
-            this.changeBackground(nextProps.isClick);      
+            this.changeBackground(nextProps.isClick);
             this.setState({ isClick: nextProps.isClick })
         }
     }
 
-    changeBackground = isClick =>{
+    changeBackground = isClick => {
         if (!isClick) {
             this.setState({ rowColBackground: '#FFFFFF', })
         } else {

@@ -5,6 +5,14 @@ import Disk from '../../components/Disk/Disk';
 
 const Search = Input.Search;
 
+const diskListSource = [
+    { name: "本地磁盘(C:)", isClick: false },
+    { name: "本地磁盘(D:)", isClick: false },
+    { name: "本地磁盘(E:)", isClick: false },
+    { name: "本地磁盘(F:)", isClick: false },
+    { name: "本地磁盘(G:)", isClick: false },
+];
+
 class Desktop extends React.Component {
     constructor() {
         super();
@@ -12,6 +20,7 @@ class Desktop extends React.Component {
             isClick1: false,
             isClick2: false,
             isClick3: false,
+            diskList: [],
         }
     }
 
@@ -19,43 +28,32 @@ class Desktop extends React.Component {
         console.log(value)
     }
 
-    onClick1 = () => {
-        const { isClick1 } = this.state;
-        if(!isClick1){
-            this.setState({
-                isClick1:true,
-                isClick2:false,
-                isClick3:false,
-            })
-        }else{
-            this.setState({isClick1:false});
-        }
+    componentWillMount() {
+        this.setState({ diskList: diskListSource });
     }
 
-    onClick2 = () => {
-        const { isClick2 } = this.state;
-        if(!isClick2){
-            this.setState({
-                isClick1:false,
-                isClick2:true,
-                isClick3:false,
-            })
-        }else{
-            this.setState({isClick2:false});
-        }
+    onClick(e, index, diskList) {
+        diskList.map((disk, num) => {
+            if (index == num) {
+                disk.isClick = true;
+            } else {
+                disk.isClick = false;
+            }
+        });
+        this.setState({ diskList: diskList });
     }
 
-    onClick3 = () => {
-        const { isClick3 } = this.state;
-        if(!isClick3){
-            this.setState({
-                isClick1:false,
-                isClick2:false,
-                isClick3:true,
-            })
-        }else{
-            this.setState({isClick3:false});
-        }
+    /**
+     * 生成磁盘控件
+     */
+    renderDisk = (diskList) => {
+        const renderDisk = [];
+        diskList.map((disk, index) => {
+            renderDisk.push((<Col span={6} style={{ marginTop: 28 }}>
+                <Disk labelText={disk.name} onClick={(e) => { this.onClick(e, index, diskList) }} isClick={disk.isClick} />
+            </Col>));
+        })
+        return renderDisk;
     }
 
     render() {
@@ -64,19 +62,11 @@ class Desktop extends React.Component {
                 <Search
                     placeholder="我的电脑"
                     onSearch={this.onSearch}
-                    style={{ width: 600 }}
+                    style={{ width: '90%' }}
                 />
-                <div className={styles.wrapper}>
+                <div>
                     <Row>
-                        <Col span={6} >
-                            <Disk labelText="本地磁盘(C:)" onClick={this.onClick1} isClick={this.state.isClick1}/>
-                        </Col>
-                        <Col span={6} >
-                            <Disk labelText="本地磁盘(D:)"  onClick={this.onClick2} isClick={this.state.isClick2}/>
-                        </Col>
-                        <Col span={6} >
-                            <Disk labelText="本地磁盘(E:)"  onClick={this.onClick3} isClick={this.state.isClick3}/>
-                        </Col>
+                        {this.renderDisk(this.state.diskList)}
                     </Row>
                 </div>
             </div>
