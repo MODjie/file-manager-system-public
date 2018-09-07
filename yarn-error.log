@@ -2,7 +2,7 @@ Arguments:
   D:\developerTools\node\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
 
 PATH: 
-  C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\UCRT\;C:\Program Files\Intel\UCRT\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Java\jdk1.8.0_25\bin;D:\developerTools\apache-maven-3.2.5\bin;D:\developerTools\node\node_global;D:\developerTools\node\;D:\developerTools\小乌龟\bin;%G;ADLE_HOME%\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\Yarn\bin;D:\developerTools\node\node_global;D:\developerTools\Microsoft VS Code\bin;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Roaming\npm;C:\Users\user\AppData\Local\Yarn\bin
+  C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\UCRT\;C:\Program Files\Intel\UCRT\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Java\jdk1.8.0_25\bin;D:\developerTools\apache-maven-3.2.5\bin;D:\developerTools\node\node_global;D:\developerTools\node\;%G;ADLE_HOME%\bin;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\Yarn\bin\;D:\developerTools\TorroiseSVN\bin;C:\Program Files (x86)\Yarn\bin;D:\developerTools\node\node_global;D:\developerTools\Microsoft VS Code\bin;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Roaming\npm;C:\Users\user\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.5.1
@@ -39,7 +39,7 @@ npm manifest:
       "eslint-plugin-react": "^7.1.0",
       "husky": "^0.12.0",
       "redbox-react": "^1.4.3",
-      "roadhog": "^2.0.0"
+      "roadhog": "^2.4.5"
     }
   }
 
@@ -8281,9 +8281,9 @@ Lockfile:
       babel-runtime "6.x"
       classnames "^2.2.5"
   
-  roadhog@^2.0.0:
-    version "2.4.3"
-    resolved "https://registry.yarnpkg.com/roadhog/-/roadhog-2.4.3.tgz#08be59e1b8878ffb2f72bd43fe9b30e290303f7b"
+  roadhog@^2.4.5:
+    version "2.4.5"
+    resolved "https://registry.yarnpkg.com/roadhog/-/roadhog-2.4.5.tgz#bc1c667b9a816fc8ec7076ab2f2950c0eeb98560"
     dependencies:
       "@babel/core" "7.0.0-beta.46"
       "@babel/polyfill" "7.0.0-beta.46"
@@ -9951,7 +9951,7 @@ Trace:
   Exit code: 3221225786
   Command: C:\Windows\system32\cmd.exe
   Arguments: /d /s /c roadhog server
-  Directory: d:\idealWorkspace\file-manager-system-public
+  Directory: D:\idealWorkspace\file-manager-system-public
   Output:
   
       at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)

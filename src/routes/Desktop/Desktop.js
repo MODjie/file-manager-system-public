@@ -34,12 +34,14 @@ class Desktop extends React.Component {
 
     linkTest = () => {
         this.props.dispatch({
-            type: 'test',
-        }).then(result => {
-            if (result) {
-                message.success(result);
+            type: 'desktop/linkTest',
+        }).then((response) => {
+            const msg = this.props.msg;
+            debugger
+            if (msg) {
+                message.success(msg);
             } else {
-                message.errr("连接失败");
+                message.error("连接失败");
             }
         });
     }
@@ -86,9 +88,10 @@ class Desktop extends React.Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return dispatch
+function mapStateToProps(state, props) {
+    const { msg } = state.desktop;
+    return state.desktop
 
 }
 
-export default connect(mapDispatchToProps)(Desktop);
+export default connect(mapStateToProps)(Desktop);
