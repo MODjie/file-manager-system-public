@@ -106,28 +106,43 @@ class Disk extends React.Component {
     /**
      * 右下角内容（暂时表示进度条）
      */
+    // progessRender = () => {
+    //     const { progessRender } = this.props;
+    //     const { defaultStrokeWidth, debaultStrokeLinecap, defaultShowInfo, defaultPercent, defaultStyle } = this.state.defaultProgess
+    //     if (progessRender) {
+    //         return (
+    //             <Progress
+    //                 strokeWidth={progessRender.defaultStrokeWidth}
+    //                 strokeLinecap={progessRender.debaultStrokeLinecap}
+    //                 showInfo={progessRender.defaultShowInfo}
+    //                 percent={progessRender.defaultPercent}
+    //                 style={progessRender.defaultStyle} />
+    //         )
+    //     } else {
+    //         return (
+    //             <Progress
+    //                 strokeWidth={defaultStrokeWidth}
+    //                 strokeLinecap={debaultStrokeLinecap}
+    //                 showInfo={defaultShowInfo}
+    //                 percent={defaultPercent}
+    //                 style={defaultStyle} />
+    //         )
+    //     }
+    // }
+    /**
+     * 右下角内容（暂时表示进度条）
+     */
     progessRender = () => {
-        const { progessRender } = this.props;
+        const { strokeWidth, strokeLinecap, showInfo, percent, style } = this.props;
         const { defaultStrokeWidth, debaultStrokeLinecap, defaultShowInfo, defaultPercent, defaultStyle } = this.state.defaultProgess
-        if (progessRender) {
-            return (
-                <Progress
-                    strokeWidth={progessRender.defaultStrokeWidth}
-                    strokeLinecap={progessRender.debaultStrokeLinecap}
-                    showInfo={progessRender.defaultShowInfo}
-                    percent={progessRender.defaultPercent}
-                    style={progessRender.defaultStyle} />
-            )
-        } else {
-            return (
-                <Progress
-                    strokeWidth={defaultStrokeWidth}
-                    strokeLinecap={debaultStrokeLinecap}
-                    showInfo={defaultShowInfo}
-                    percent={defaultPercent}
-                    style={defaultStyle} />
-            )
-        }
+        return (
+            <Progress
+                strokeWidth={strokeWidth ? strokeWidth : defaultStrokeWidth}
+                strokeLinecap={strokeLinecap ? strokeLinecap : debaultStrokeLinecap}
+                showInfo={showInfo ? showInfo : defaultShowInfo}
+                percent={percent ? percent : defaultPercent}
+                style={style ? style : defaultStyle} />
+        )
     }
 
     render() {

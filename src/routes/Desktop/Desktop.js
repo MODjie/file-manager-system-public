@@ -28,20 +28,22 @@ class Desktop extends React.Component {
     }
 
     componentWillMount() {
-        this.setState({ diskList: diskListSource });
-        this.linkTest();
+        // this.setState({ diskList: diskListSource });
+        this.getDiskInfos();
     }
 
-    linkTest = () => {
+    getDiskInfos = () => {
         this.props.dispatch({
-            type: 'desktop/linkTest',
+            type: 'desktop/getDiskInfos',
         }).then((response) => {
-            const msg = this.props.msg;
-            debugger
-            if (msg) {
-                message.success(msg);
+            if (response && response.data) {
+                const diskList = response.data;
+                diskList.map(info => {
+                    info.isClick = false;
+                })
+                this.setState({ diskList: diskList })
             } else {
-                message.error("连接失败");
+                message.error("操作异常");
             }
         });
     }
@@ -64,7 +66,11 @@ class Desktop extends React.Component {
         const renderDisk = [];
         diskList.map((disk, index) => {
             renderDisk.push((<Col span={6} style={{ marginTop: 28 }}>
-                <Disk labelText={disk.name} onClick={(e) => { this.onClick(e, index, diskList) }} isClick={disk.isClick} />
+                <Disk
+                    labelText={disk.diskName}
+                    onClick={(e) => { this.onClick(e, index, diskList) }}
+                    isClick={disk.isClick}
+                    percent={disk.usePercent} />
             </Col>));
         })
         return renderDisk;
